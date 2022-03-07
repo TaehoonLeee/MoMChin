@@ -63,8 +63,9 @@ kotlin {
                 implementation(deps.kotlinx.coroutines)
                 implementation(deps.kotlinx.serialization.json)
                 api(deps.decompose.decompose)
-                implementation(deps.decompose.extension.compose)
+                api(deps.decompose.extension.compose)
                 implementation(deps.koin.core)
+                implementation(deps.badoo.reaktive)
                 implementation(deps.bundles.ktor)
                 implementation(deps.bundles.mviKotlin)
             }
@@ -72,7 +73,6 @@ kotlin {
         val commonTest by getting
         val androidMain by getting {
             dependencies {
-                implementation(deps.bundles.compose)
                 implementation(deps.ktor.okHttp)
             }
         }
@@ -95,30 +95,6 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 31
-    }
-}
-
-configurations {
-    create("composeCompiler") {
-        isCanBeConsumed = false
-    }
-}
-
-dependencies {
-    add("composeCompiler", "androidx.compose.compiler:compiler:1.2.0-alpha02")
-}
-
-afterEvaluate {
-    val composeCompilerJar =
-        project
-            .configurations
-            .getByName("composeCompiler")
-            .resolve()
-            .firstOrNull()
-            ?: throw Exception("Please add \"androidx.compose.compiler:compiler\" (and only that) as a \"composeCompiler\" dependency")
-
-    project.tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.freeCompilerArgs += listOf("-Xuse-ir", "-Xplugin=$composeCompilerJar")
     }
 }
 
