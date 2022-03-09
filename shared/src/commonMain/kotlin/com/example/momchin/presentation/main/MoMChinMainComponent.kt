@@ -1,16 +1,15 @@
 package com.example.momchin.presentation.main
 
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.router.Router
-import com.arkivanov.decompose.router.RouterState
-import com.arkivanov.decompose.router.push
-import com.arkivanov.decompose.router.router
+import com.arkivanov.decompose.router.*
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import com.example.momchin.presentation.main.bung.BungDetail
 import com.example.momchin.presentation.main.bung.BungDetailComponent
 import com.example.momchin.presentation.main.bung.BungList
 import com.example.momchin.presentation.main.bung.BungListComponent
+import com.example.momchin.presentation.main.community.CommunityDetail
 import com.example.momchin.presentation.main.community.CommunityDetailComponent
 import com.example.momchin.presentation.main.community.CommunityList
 import com.example.momchin.presentation.main.community.CommunityListComponent
@@ -44,24 +43,41 @@ internal class MoMChinMainComponent(
         configuration: Configuration,
         componentContext: ComponentContext
     ) = when (configuration) {
-        is Configuration.List -> MoMChinMain.CommunityChild.List(CommunityListComponent(componentContext, Consumer(::onCommunityOutput)))
-        is Configuration.Detail -> MoMChinMain.CommunityChild.Detail(CommunityDetailComponent(componentContext))
+        is Configuration.List -> MoMChinMain.CommunityChild.List(CommunityListComponent(componentContext, Consumer(::onCommunityListOutput)))
+        is Configuration.Detail<*> -> MoMChinMain.CommunityChild.Detail(CommunityDetailComponent(
+            componentContext,
+            configuration.item as CommunityList.CommunityItem,
+            configuration.category?: "",
+            Consumer(::onCommunityDetailOutput)
+        ))
     }
 
     private fun resolveBungChild(
         configuration: Configuration,
         componentContext: ComponentContext
     ) = when (configuration) {
-        is Configuration.List -> MoMChinMain.BungChild.List(BungListComponent(componentContext, Consumer(::onBungOutput)))
-        is Configuration.Detail -> MoMChinMain.BungChild.Detail(BungDetailComponent(componentContext))
+        is Configuration.List -> MoMChinMain.BungChild.List(BungListComponent(componentContext, Consumer(::onBungListOutput)))
+        is Configuration.Detail<*> -> MoMChinMain.BungChild.Detail(BungDetailComponent(
+            componentContext,
+            configuration.item as BungList.Bung,
+            Consumer(::onBungDetailOutput)
+        ))
     }
 
-    private fun onCommunityOutput(output: CommunityList.Output) = when (output) {
-        is CommunityList.Output.Selected -> communityRouter.push(Configuration.Detail)
+    private fun onCommunityListOutput(output: CommunityList.Output) = when (output) {
+        is CommunityList.Output.Selected -> communityRouter.push(Configuration.Detail(output.item, output.category))
     }
 
-    private fun onBungOutput(output: BungList.Output) = when (output) {
-        is BungList.Output.Selected -> bungRouter.push(Configuration.Detail)
+    private fun onCommunityDetailOutput(output: CommunityDetail.Output) = when (output) {
+        is CommunityDetail.Output.Finished -> communityRouter.pop()
+    }
+
+    private fun onBungListOutput(output: BungList.Output) = when (output) {
+        is BungList.Output.Selected -> bungRouter.push(Configuration.Detail(output.item))
+    }
+
+    private fun onBungDetailOutput(output: BungDetail.Output) = when (output) {
+        is BungDetail.Output.Finished -> bungRouter.pop()
     }
 
     private sealed interface Configuration : Parcelable {
@@ -69,6 +85,6 @@ internal class MoMChinMainComponent(
         object List : Configuration
 
         @Parcelize
-        object Detail : Configuration
+        data class Detail<Item : Parcelable>(val item: Item, val category: String? = null) : Configuration
     }
 }

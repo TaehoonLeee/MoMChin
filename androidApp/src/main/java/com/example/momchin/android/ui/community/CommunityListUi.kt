@@ -38,7 +38,9 @@ fun CommunityListContent(component: CommunityList) {
             items(model.items) {
                 Card(modifier = Modifier
                     .fillMaxWidth()
-                    .clickable(onClick = component::onItemClicked)
+                    .clickable(onClick = {
+                        component.onItemClicked(it, model.categories[0])
+                    })
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(it.user)

@@ -1,6 +1,27 @@
 package com.example.momchin.presentation.main.community
 
+import com.arkivanov.decompose.value.Value
+
 interface CommunityDetail {
 
+    val model: Value<CommunityDetailModel>
 
+    data class CommunityDetailModel(
+        val category: String,
+        val detail: CommunityList.CommunityItem,
+        val comments: List<Comment>
+    )
+
+    data class Comment(
+        val writer: String,
+        val content: String
+    )
+
+    fun onComment()
+
+    fun onBackButtonClick()
+
+    sealed interface Output {
+        object Finished : Output
+    }
 }
