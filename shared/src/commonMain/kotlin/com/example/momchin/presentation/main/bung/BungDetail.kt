@@ -5,9 +5,9 @@ import com.example.momchin.domain.model.Bung
 
 interface BungDetail {
 
-    val model: Value<BungDetailModel>
+    val model: Value<Model>
 
-    data class BungDetailModel(
+    data class Model(
         val detail: Bung,
         val comments: List<Comment>
     )

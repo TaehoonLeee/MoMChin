@@ -5,16 +5,16 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.example.momchin.domain.model.Bung
 import com.example.momchin.presentation.main.bung.store.BungDetailStore.Intent
-import com.example.momchin.presentation.main.bung.BungDetail.BungDetailModel
+import com.example.momchin.presentation.main.bung.BungDetail.Model
 
 internal class BungDetailStoreProvider(
     private val item: Bung,
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {
 
-    fun create(): BungDetailStore = object : BungDetailStore, Store<Intent, BungDetailModel, Nothing> by storeFactory.create(
+    fun create(): BungDetailStore = object : BungDetailStore, Store<Intent, Model, Nothing> by storeFactory.create(
         name = this::class.simpleName,
-        initialState = BungDetailModel(item, listOf()),
+        initialState = Model(item, listOf()),
         bootstrapper = SimpleBootstrapper(Action.FetchBungDetailComment),
         executorFactory = ::ExecutorImpl,
         reducer = ReducerImpl()
@@ -25,15 +25,15 @@ internal class BungDetailStoreProvider(
     }
 
     private sealed interface Message {
-        data class Fetched(val model: BungDetailModel) : Message
+        data class Fetched(val model: Model) : Message
     }
 
-    private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, BungDetailModel, Message, Nothing>() {
+    private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, Model, Message, Nothing>() {
 
     }
 
-    private class ReducerImpl : Reducer<BungDetailModel, Message> {
-        override fun BungDetailModel.reduce(msg: Message): BungDetailModel = when (msg) {
+    private class ReducerImpl : Reducer<Model, Message> {
+        override fun Model.reduce(msg: Message): Model = when (msg) {
             is Message.Fetched -> copy(detail = msg.model.detail, comments = msg.model.comments)
         }
 

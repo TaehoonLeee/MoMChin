@@ -1,17 +1,15 @@
 package com.example.momchin.presentation.main.bung
 
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.parcelable.Parcelable
-import com.arkivanov.essenty.parcelable.Parcelize
 import com.example.momchin.domain.model.Bung
 
 interface BungList {
 
-    val model: Value<BungListModel>
+    val model: Value<Model>
 
     fun onItemClicked(item: Bung)
 
-    data class BungListModel(
+    data class Model(
         val items: List<Bung>
     )
 

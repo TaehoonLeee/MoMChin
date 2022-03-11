@@ -18,7 +18,7 @@ internal class CommunityListComponent(
         CommunityListStoreProvider().create()
     }
 
-    override val model: Value<CommunityList.CommunityListModel> = store.asValue()
+    override val model: Value<CommunityList.Model> = store.asValue()
 
     override fun onItemClicked(item: CommunityItem, category: String) {
         output(CommunityList.Output.Selected(item, category))

@@ -21,16 +21,19 @@ struct MainView : View {
         TabView {
             CommunityView(component)
                 .tabItem {
+                    Image(systemName: "1.square.fill")
                     Text("Community")
                 }
-            
+
             BungView(component)
                 .tabItem {
+                    Image(systemName: "2.square.fill")
                     Text("Bung")
                 }
-            
+
             MessageView(component)
                 .tabItem {
+                    Image(systemName: "3.square.fill")
                     Text("Message")
                 }
         }

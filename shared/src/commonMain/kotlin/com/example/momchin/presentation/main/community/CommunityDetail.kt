@@ -5,9 +5,9 @@ import com.example.momchin.domain.model.CommunityItem
 
 interface CommunityDetail {
 
-    val model: Value<CommunityDetailModel>
+    val model: Value<Model>
 
-    data class CommunityDetailModel(
+    data class Model(
         val category: String,
         val detail: CommunityItem,
         val comments: List<Comment>

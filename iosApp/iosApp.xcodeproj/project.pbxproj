@@ -11,6 +11,8 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		E34811A727DB912500C70C70 /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34811A627DB912500C70C70 /* CommunityDetailView.swift */; };
+		E34811A927DB943A00C70C70 /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34811A827DB943A00C70C70 /* Unique.swift */; };
 		E3C6ECA927DB5A290091E723 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECA827DB5A290091E723 /* ObservableValue.swift */; };
 		E3C6ECAB27DB5AEE0091E723 /* ComponentHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECAA27DB5AEE0091E723 /* ComponentHolder.swift */; };
 		E3C6ECB227DB5CA20091E723 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECB127DB5CA20091E723 /* LoginView.swift */; };
@@ -19,6 +21,7 @@
 		E3C6ECBC27DB60490091E723 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECBB27DB60490091E723 /* CommunityView.swift */; };
 		E3C6ECC127DB64B50091E723 /* BungView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECC027DB64B50091E723 /* BungView.swift */; };
 		E3C6ECC327DB64E20091E723 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C6ECC227DB64E20091E723 /* MessageView.swift */; };
+		E3CB491E27DB84FE00889AE9 /* CommunityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB491D27DB84FE00889AE9 /* CommunityListView.swift */; };
 		F6EC55239F03E26F2D595C44 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D212477B98B4EB0447048E9F /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,8 @@
 		9335428F32376869C4291D82 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		D212477B98B4EB0447048E9F /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62ECBE8E6E3FE8609E38FD8 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E34811A627DB912500C70C70 /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
+		E34811A827DB943A00C70C70 /* Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unique.swift; sourceTree = "<group>"; };
 		E3C6ECA827DB5A290091E723 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		E3C6ECAA27DB5AEE0091E723 /* ComponentHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentHolder.swift; sourceTree = "<group>"; };
 		E3C6ECB127DB5CA20091E723 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		E3C6ECBB27DB60490091E723 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		E3C6ECC027DB64B50091E723 /* BungView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BungView.swift; sourceTree = "<group>"; };
 		E3C6ECC227DB64E20091E723 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		E3CB491D27DB84FE00889AE9 /* CommunityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 			children = (
 				E3C6ECA827DB5A290091E723 /* ObservableValue.swift */,
 				E3C6ECAA27DB5AEE0091E723 /* ComponentHolder.swift */,
+				E34811A827DB943A00C70C70 /* Unique.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -154,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				E3C6ECBB27DB60490091E723 /* CommunityView.swift */,
+				E3CB491D27DB84FE00889AE9 /* CommunityListView.swift */,
+				E34811A627DB912500C70C70 /* CommunityDetailView.swift */,
 			);
 			path = community;
 			sourceTree = "<group>";
@@ -306,6 +315,9 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				E3C6ECB927DB5F170091E723 /* MainView.swift in Sources */,
 				E3C6ECAB27DB5AEE0091E723 /* ComponentHolder.swift in Sources */,
+				E34811A727DB912500C70C70 /* CommunityDetailView.swift in Sources */,
+				E34811A927DB943A00C70C70 /* Unique.swift in Sources */,
+				E3CB491E27DB84FE00889AE9 /* CommunityListView.swift in Sources */,
 				E3C6ECC127DB64B50091E723 /* BungView.swift in Sources */,
 				E3C6ECC327DB64E20091E723 /* MessageView.swift in Sources */,
 				E3C6ECB527DB5DFC0091E723 /* RootView.swift in Sources */,

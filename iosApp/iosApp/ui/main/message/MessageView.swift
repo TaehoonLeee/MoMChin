@@ -22,9 +22,9 @@ struct MessageView : View {
         let child = routerState.value.activeChild.instance
         
         switch child {
-        case let list as MoMChinMainCommunityChildList:
+        case let list as MoMChinMainMessageChildList:
             Text("Message")
-        case let detail as MoMChinMainCommunityChildDetail:
+        case let detail as MoMChinMainMessageChildDetail:
             EmptyView()
         default: EmptyView()
         }

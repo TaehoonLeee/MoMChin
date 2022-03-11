@@ -18,7 +18,7 @@ internal class BungListComponent(
         BungListStoreProvider().create()
     }
 
-    override val model: Value<BungList.BungListModel> = store.asValue()
+    override val model: Value<BungList.Model> = store.asValue()
 
     override fun onItemClicked(item: Bung) {
         output(BungList.Output.Selected(item))

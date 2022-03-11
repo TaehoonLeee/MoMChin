@@ -1,15 +1,13 @@
 package com.example.momchin.presentation.main.community
 
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.parcelable.Parcelable
-import com.arkivanov.essenty.parcelable.Parcelize
 import com.example.momchin.domain.model.CommunityItem
 
 interface CommunityList {
 
-    val model: Value<CommunityListModel>
+    val model: Value<Model>
 
-    data class CommunityListModel(
+    data class Model(
         val categories: List<String>,
         val items: List<CommunityItem>
     )

@@ -22,9 +22,9 @@ struct BungView : View {
         let child = routerState.value.activeChild.instance
         
         switch child {
-        case let list as MoMChinMainCommunityChildList:
+        case let list as MoMChinMainBungChildList:
             Text("Bung")
-        case let detail as MoMChinMainCommunityChildDetail:
+        case let detail as MoMChinMainBungChildDetail:
             EmptyView()
         default: EmptyView()
         }

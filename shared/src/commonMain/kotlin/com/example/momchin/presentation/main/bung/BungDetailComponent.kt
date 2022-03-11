@@ -19,7 +19,7 @@ internal class BungDetailComponent(
         BungDetailStoreProvider(item).create()
     }
 
-    override val model: Value<BungDetail.BungDetailModel> = store.asValue()
+    override val model: Value<BungDetail.Model> = store.asValue()
 
     override fun onBackButtonClick() {
         output(BungDetail.Output.Finished)

@@ -21,7 +21,7 @@ internal class CommunityDetailComponent(
         CommunityDetailStoreProvider(category, item).create()
     }
 
-    override val model: Value<CommunityDetail.CommunityDetailModel> = store.asValue()
+    override val model: Value<CommunityDetail.Model> = store.asValue()
 
     override fun onComment() {
         store.accept(CommunityDetailStore.Intent.Comment)

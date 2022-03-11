@@ -19,7 +19,7 @@ kotlin {
         else -> ::iosX64
     }
 
-//    iosTarget("ios") {}
+    iosTarget("ios") {}
 
     ios {
         binaries {
@@ -60,7 +60,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(deps.kotlinx.coroutines)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt") {
+                    version {
+                        strictly("1.6.0-native-mt")
+                    }
+                }
                 implementation(deps.kotlinx.serialization.json)
                 api(deps.decompose.decompose)
                 api(deps.decompose.extension.compose)

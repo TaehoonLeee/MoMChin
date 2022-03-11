@@ -7,9 +7,8 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.example.momchin.domain.model.CommunityItem
-import com.example.momchin.presentation.main.community.CommunityDetail.CommunityDetailModel
+import com.example.momchin.presentation.main.community.CommunityDetail.Model
 import com.example.momchin.presentation.main.community.CommunityDetail.Comment
-import com.example.momchin.presentation.main.community.CommunityList
 import com.example.momchin.presentation.main.community.store.CommunityDetailStore.Intent
 
 internal class CommunityDetailStoreProvider(
@@ -18,9 +17,9 @@ internal class CommunityDetailStoreProvider(
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {
 
-    fun create(): CommunityDetailStore = object : CommunityDetailStore, Store<Intent, CommunityDetailModel, Nothing> by storeFactory.create(
+    fun create(): CommunityDetailStore = object : CommunityDetailStore, Store<Intent, Model, Nothing> by storeFactory.create(
         name = this::class.simpleName,
-        initialState = CommunityDetailModel(category, item, listOf()),
+        initialState = Model(category, item, listOf()),
         bootstrapper = SimpleBootstrapper(Action.FetchDetailContent),
         executorFactory = ::ExecutorImpl,
         reducer = ReducerImpl()
@@ -31,14 +30,14 @@ internal class CommunityDetailStoreProvider(
     }
 
     private sealed interface Message {
-        data class Fetched(val data: CommunityDetailModel): Message
+        data class Fetched(val data: Model): Message
     }
 
-    private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, CommunityDetailModel, Message, Nothing>() {
-        override fun executeAction(action: Action, getState: () -> CommunityDetailModel) = when (action) {
+    private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, Model, Message, Nothing>() {
+        override fun executeAction(action: Action, getState: () -> Model) = when (action) {
             is Action.FetchDetailContent -> dispatch(
                 Message.Fetched(
-                    CommunityDetailModel(
+                    Model(
                         category,
                         item,
                         listOf(
@@ -55,15 +54,15 @@ internal class CommunityDetailStoreProvider(
             )
         }
 
-        override fun executeIntent(intent: Intent, getState: () -> CommunityDetailModel) {
+        override fun executeIntent(intent: Intent, getState: () -> Model) {
             when (intent) {
                 is Intent.Comment -> {}
             }
         }
     }
 
-    private class ReducerImpl : Reducer<CommunityDetailModel, Message> {
-        override fun CommunityDetailModel.reduce(msg: Message): CommunityDetailModel = when (msg) {
+    private class ReducerImpl : Reducer<Model, Message> {
+        override fun Model.reduce(msg: Message): Model = when (msg) {
             is Message.Fetched -> copy(detail = msg.data.detail, comments = msg.data.comments)
         }
 

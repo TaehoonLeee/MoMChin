@@ -7,16 +7,16 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.example.momchin.domain.model.Bung
-import com.example.momchin.presentation.main.bung.BungList.BungListModel
+import com.example.momchin.presentation.main.bung.BungList.Model
 import com.example.momchin.presentation.main.bung.store.BungListStore.Intent
 
 internal class BungListStoreProvider(
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {
 
-    fun create(): BungListStore = object : BungListStore, Store<Intent, BungListModel, Nothing> by storeFactory.create(
+    fun create(): BungListStore = object : BungListStore, Store<Intent, Model, Nothing> by storeFactory.create(
         name = this::class.simpleName,
-        initialState = BungListModel(listOf()),
+        initialState = Model(listOf()),
         bootstrapper = SimpleBootstrapper(Action.FetchBungList),
         executorFactory = ::ExecutorImpl,
         reducer = ReducerImpl()
@@ -27,15 +27,15 @@ internal class BungListStoreProvider(
     }
 
     private sealed interface Message {
-        data class Fetched(val model: BungListModel) : Message
+        data class Fetched(val model: Model) : Message
     }
 
-    private class ExecutorImpl : CoroutineExecutor<Intent, Action, BungListModel, Message, Nothing>() {
-        override fun executeAction(action: Action, getState: () -> BungListModel) {
+    private class ExecutorImpl : CoroutineExecutor<Intent, Action, Model, Message, Nothing>() {
+        override fun executeAction(action: Action, getState: () -> Model) {
             when (action) {
                 is Action.FetchBungList -> dispatch(
                     Message.Fetched(
-                        BungListModel(
+                        Model(
                             listOf(
                                 Bung("1", "1"),
                                 Bung("1", "1"),
@@ -58,8 +58,8 @@ internal class BungListStoreProvider(
         }
     }
 
-    private class ReducerImpl : Reducer<BungListModel, Message> {
-        override fun BungListModel.reduce(msg: Message): BungListModel = when (msg) {
+    private class ReducerImpl : Reducer<Model, Message> {
+        override fun Model.reduce(msg: Message): Model = when (msg) {
             is Message.Fetched -> copy(items = msg.model.items)
         }
     }

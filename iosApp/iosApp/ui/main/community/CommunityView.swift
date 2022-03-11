@@ -23,9 +23,9 @@ struct CommunityView : View {
         
         switch child {
         case let list as MoMChinMainCommunityChildList:
-            Text("Community")
+            CommunityListView(list.component)
         case let detail as MoMChinMainCommunityChildDetail:
-            EmptyView()
+            CommunityDetailView(detail.component)
         default: EmptyView()
         }
     }
