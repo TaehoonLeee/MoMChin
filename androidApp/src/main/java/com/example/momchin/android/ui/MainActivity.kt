@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetpack.Children
 import com.example.momchin.Greeting
-import com.example.momchin.android.ui.login.MoMChinLoginContent
-import com.example.momchin.android.ui.main.MoMChinMainContent
+import com.example.momchin.android.ui.login.LoginContent
+import com.example.momchin.android.ui.main.MainContent
 import com.example.momchin.presentation.root.MoMChinRoot
 import com.example.momchin.presentation.root.MoMChinRootComponent
 
@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Children(momChinRoot.routerState) {
                 when (val child = it.instance) {
-                    is MoMChinRoot.Child.Login -> MoMChinLoginContent(child.component)
-                    is MoMChinRoot.Child.Main -> MoMChinMainContent(child.component)
+                    is MoMChinRoot.Child.Login -> LoginContent(child.component)
+                    is MoMChinRoot.Child.Main -> MainContent(child.component)
                 }
             }
         }

@@ -19,7 +19,7 @@ kotlin {
         else -> ::iosX64
     }
 
-    iosTarget("ios") {}
+//    iosTarget("ios") {}
 
     ios {
         binaries {

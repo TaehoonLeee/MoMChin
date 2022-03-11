@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.momchin.presentation.login.MoMChinLogin
 
 @Composable
-fun MoMChinLoginContent(component: MoMChinLogin) {
+fun LoginContent(component: MoMChinLogin) {
     Box(Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier.align(Alignment.Center),
