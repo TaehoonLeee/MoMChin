@@ -5,6 +5,7 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.badoo.reaktive.base.Consumer
 import com.badoo.reaktive.base.invoke
+import com.example.momchin.domain.model.Bung
 import com.example.momchin.presentation.main.bung.store.BungListStoreProvider
 import com.example.momchin.util.extension.asValue
 
@@ -19,7 +20,7 @@ internal class BungListComponent(
 
     override val model: Value<BungList.BungListModel> = store.asValue()
 
-    override fun onItemClicked(item: BungList.Bung) {
+    override fun onItemClicked(item: Bung) {
         output(BungList.Output.Selected(item))
     }
 }

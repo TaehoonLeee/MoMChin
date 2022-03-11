@@ -5,6 +5,7 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.badoo.reaktive.base.Consumer
 import com.badoo.reaktive.base.invoke
+import com.example.momchin.domain.model.CommunityItem
 import com.example.momchin.presentation.main.community.store.CommunityListStoreProvider
 import com.example.momchin.util.extension.asValue
 
@@ -19,7 +20,7 @@ internal class CommunityListComponent(
 
     override val model: Value<CommunityList.CommunityListModel> = store.asValue()
 
-    override fun onItemClicked(item: CommunityList.CommunityItem, category: String) {
+    override fun onItemClicked(item: CommunityItem, category: String) {
         output(CommunityList.Output.Selected(item, category))
     }
 }

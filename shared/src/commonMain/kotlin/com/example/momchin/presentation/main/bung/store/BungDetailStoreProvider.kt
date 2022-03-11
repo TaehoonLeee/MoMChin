@@ -3,11 +3,11 @@ package com.example.momchin.presentation.main.bung.store
 import com.arkivanov.mvikotlin.core.store.*
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import com.example.momchin.presentation.main.bung.BungList.Bung
+import com.example.momchin.domain.model.Bung
 import com.example.momchin.presentation.main.bung.store.BungDetailStore.Intent
 import com.example.momchin.presentation.main.bung.BungDetail.BungDetailModel
 
-class BungDetailStoreProvider(
+internal class BungDetailStoreProvider(
     private val item: Bung,
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {

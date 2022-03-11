@@ -6,11 +6,11 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import com.example.momchin.presentation.main.bung.BungList.Bung
+import com.example.momchin.domain.model.Bung
 import com.example.momchin.presentation.main.bung.BungList.BungListModel
 import com.example.momchin.presentation.main.bung.store.BungListStore.Intent
 
-class BungListStoreProvider(
+internal class BungListStoreProvider(
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {
 

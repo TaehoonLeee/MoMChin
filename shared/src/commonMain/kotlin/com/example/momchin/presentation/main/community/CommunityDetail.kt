@@ -1,6 +1,7 @@
 package com.example.momchin.presentation.main.community
 
 import com.arkivanov.decompose.value.Value
+import com.example.momchin.domain.model.CommunityItem
 
 interface CommunityDetail {
 
@@ -8,7 +9,7 @@ interface CommunityDetail {
 
     data class CommunityDetailModel(
         val category: String,
-        val detail: CommunityList.CommunityItem,
+        val detail: CommunityItem,
         val comments: List<Comment>
     )
 

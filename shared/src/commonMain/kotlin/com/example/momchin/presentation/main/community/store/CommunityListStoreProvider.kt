@@ -6,7 +6,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import com.example.momchin.presentation.main.community.CommunityList.CommunityItem
+import com.example.momchin.domain.model.CommunityItem
 import com.example.momchin.presentation.main.community.CommunityList.CommunityListModel
 import com.example.momchin.presentation.main.community.store.CommunityListStore.Intent
 

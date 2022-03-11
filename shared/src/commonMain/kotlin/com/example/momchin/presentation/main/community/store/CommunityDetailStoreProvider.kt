@@ -6,14 +6,15 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
+import com.example.momchin.domain.model.CommunityItem
 import com.example.momchin.presentation.main.community.CommunityDetail.CommunityDetailModel
 import com.example.momchin.presentation.main.community.CommunityDetail.Comment
 import com.example.momchin.presentation.main.community.CommunityList
 import com.example.momchin.presentation.main.community.store.CommunityDetailStore.Intent
 
-class CommunityDetailStoreProvider(
+internal class CommunityDetailStoreProvider(
     private val category: String,
-    private val item: CommunityList.CommunityItem,
+    private val item: CommunityItem,
     private val storeFactory: StoreFactory = DefaultStoreFactory()
 ) {
 

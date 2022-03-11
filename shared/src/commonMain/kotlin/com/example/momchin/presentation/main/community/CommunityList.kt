@@ -3,6 +3,7 @@ package com.example.momchin.presentation.main.community
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import com.example.momchin.domain.model.CommunityItem
 
 interface CommunityList {
 
@@ -12,14 +13,6 @@ interface CommunityList {
         val categories: List<String>,
         val items: List<CommunityItem>
     )
-
-    @Parcelize
-    data class CommunityItem(
-        val user: String,
-        val title: String,
-        val content: String,
-        val profileImage: String = ""
-    ) : Parcelable
 
     fun onItemClicked(item: CommunityItem, category: String)
 
