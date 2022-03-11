@@ -6,11 +6,14 @@ import com.example.momchin.presentation.main.bung.BungDetail
 import com.example.momchin.presentation.main.bung.BungList
 import com.example.momchin.presentation.main.community.CommunityDetail
 import com.example.momchin.presentation.main.community.CommunityList
+import com.example.momchin.presentation.main.message.MessageDetail
+import com.example.momchin.presentation.main.message.MessageList
 
 interface MoMChinMain {
 
     val communityRouterState: Value<RouterState<*, CommunityChild>>
     val bungRouterState: Value<RouterState<*, BungChild>>
+    val messageRouterState: Value<RouterState<*, MessageChild>>
 
     sealed interface CommunityChild {
         data class List(val component: CommunityList) : CommunityChild
@@ -20,5 +23,10 @@ interface MoMChinMain {
     sealed interface BungChild {
         data class List(val component: BungList) : BungChild
         data class Detail(val component: BungDetail) : BungChild
+    }
+
+    sealed interface MessageChild {
+        data class List(val component: MessageList) : MessageChild
+        data class Detail(val component: MessageDetail) : MessageChild
     }
 }

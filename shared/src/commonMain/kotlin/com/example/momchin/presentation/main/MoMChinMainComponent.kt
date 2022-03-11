@@ -6,6 +6,7 @@ import com.arkivanov.decompose.router.RouterState
 import com.arkivanov.decompose.value.Value
 import com.example.momchin.presentation.main.bung.BungRootComponent
 import com.example.momchin.presentation.main.community.CommunityRootComponent
+import com.example.momchin.presentation.main.message.MessageRootComponent
 
 internal class MoMChinMainComponent(
     componentContext: ComponentContext
@@ -13,11 +14,15 @@ internal class MoMChinMainComponent(
 
     private val communityRoot = CommunityRootComponent(childContext("Community"))
     private val bungRoot = BungRootComponent(childContext("Bung"))
+    private val messageRoot = MessageRootComponent(childContext("Message"))
 
     override val communityRouterState: Value<RouterState<*, MoMChinMain.CommunityChild>>
         = communityRoot.routerState
 
     override val bungRouterState: Value<RouterState<*, MoMChinMain.BungChild>>
         = bungRoot.routerState
+
+    override val messageRouterState: Value<RouterState<*, MoMChinMain.MessageChild>>
+        = messageRoot.routerState
 
 }
