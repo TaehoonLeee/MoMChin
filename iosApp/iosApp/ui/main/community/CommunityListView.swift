@@ -24,25 +24,27 @@ struct CommunityListView : View {
     var body: some View {
         let model = model.value
         
-        VStack {
-            HStack {
-                ForEach(model.categories, id: \.self) {
-                    Text($0)
+        NavigationView {
+            VStack {
+                HStack {
+                    ForEach(model.categories, id: \.self) {
+                        Text($0)
+                    }
                 }
-            }
-            
-            ScrollView {
-                LazyVStack(alignment: .center, spacing: 12) {
-                    let uniqueItems = model.items.map { Unique($0) }
-                    
-                    ForEach(uniqueItems) { uniqueItem in
-                        let item = uniqueItem.value
-                        VStack {
-                            Text(item.title)
-                            Text(item.user)
-                            Text(item.content)
-                        }.onTapGesture {
-                            component.onItemClicked(item: item, category: model.categories[0])
+                
+                ScrollView {
+                    LazyVStack(alignment: .center, spacing: 12) {
+                        let uniqueItems = model.items.map { Unique($0) }
+                        
+                        ForEach(uniqueItems) { uniqueItem in
+                            let item = uniqueItem.value
+                            VStack {
+                                Text(item.title)
+                                Text(item.user)
+                                Text(item.content)
+                            }.onTapGesture {
+                                component.onItemClicked(item: item, category: model.categories[0])
+                            }
                         }
                     }
                 }

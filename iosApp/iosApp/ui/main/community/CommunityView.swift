@@ -20,7 +20,7 @@ struct CommunityView : View {
     
     var body: some View {
         let child = routerState.value.activeChild.instance
-        
+
         switch child {
         case let list as MoMChinMainCommunityChildList:
             CommunityListView(list.component)

@@ -25,23 +25,25 @@ struct CommunityDetailView : View {
         let model = model.value
         let content = model.detail
         
-        VStack {
+        NavigationView {
             VStack {
-                Text(content.title)
-                Text(content.user)
-                Text(content.content)
-            }
-            
-            ScrollView {
-                LazyVStack(alignment: .center, spacing: 12) {
-                    let uniqueItems = model.comments.map { Unique($0) }
-                    
-                    ForEach(uniqueItems) { uniqueItem in
-                        let comment = uniqueItem.value
+                VStack {
+                    Text(content.title)
+                    Text(content.user)
+                    Text(content.content)
+                }
+                
+                ScrollView {
+                    LazyVStack(alignment: .center, spacing: 12) {
+                        let uniqueItems = model.comments.map { Unique($0) }
                         
-                        VStack {
-                            Text(comment.writer)
-                            Text(comment.content)
+                        ForEach(uniqueItems) { uniqueItem in
+                            let comment = uniqueItem.value
+                            
+                            VStack {
+                                Text(comment.writer)
+                                Text(comment.content)
+                            }
                         }
                     }
                 }

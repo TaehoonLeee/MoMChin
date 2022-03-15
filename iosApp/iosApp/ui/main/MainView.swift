@@ -15,6 +15,7 @@ struct MainView : View {
     
     init(_ component: MoMChinMain) {
         self.component = component
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
     
     var body: some View {
