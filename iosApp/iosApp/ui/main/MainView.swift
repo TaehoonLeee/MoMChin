@@ -20,11 +20,22 @@ struct MainView : View {
     
     var body: some View {
         TabView {
-            CommunityView(component)
-                .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("Community")
+            CommunityView(component) { child, isHidden in
+                if child is MoMChinMainCommunityChildList {
+                    CommunityListView((child as! MoMChinMainCommunityChildList).component)
+                        .isHidden(isHidden)
+                        .zIndex(1)
                 }
+                
+                if child is MoMChinMainCommunityChildDetail {
+                    CommunityDetailView((child as! MoMChinMainCommunityChildDetail).component)
+                        .isHidden(isHidden)
+                        .zIndex(2)
+                }
+            }.tabItem {
+                Image(systemName: "1.square.fill")
+                Text("Community")
+            }
 
             BungView(component)
                 .tabItem {

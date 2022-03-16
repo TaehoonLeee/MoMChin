@@ -8,10 +8,13 @@ import com.example.momchin.presentation.main.community.CommunityDetail
 import com.example.momchin.presentation.main.community.CommunityList
 import com.example.momchin.presentation.main.message.MessageDetail
 import com.example.momchin.presentation.main.message.MessageList
+import com.example.momchin.util.AnimatedChild
 
 interface MoMChinMain {
 
     val communityRouterState: Value<RouterState<*, CommunityChild>>
+    val animatedCRouterState: Value<List<AnimatedChild<CommunityChild>>>
+
     val bungRouterState: Value<RouterState<*, BungChild>>
     val messageRouterState: Value<RouterState<*, MessageChild>>
 

@@ -47,7 +47,9 @@ struct CommunityDetailView : View {
                         }
                     }
                 }
-            }
+            }.navigationBarItems(leading: Button(action: component.onBackButtonClick) {
+                Image(systemName: "chevron.left")
+            })
         }
     }
 }

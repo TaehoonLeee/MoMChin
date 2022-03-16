@@ -7,6 +7,8 @@ import com.arkivanov.decompose.value.Value
 import com.example.momchin.presentation.main.bung.BungRootComponent
 import com.example.momchin.presentation.main.community.CommunityRootComponent
 import com.example.momchin.presentation.main.message.MessageRootComponent
+import com.example.momchin.util.AnimatedChild
+import com.example.momchin.util.asValue
 
 internal class MoMChinMainComponent(
     componentContext: ComponentContext
@@ -18,6 +20,9 @@ internal class MoMChinMainComponent(
 
     override val communityRouterState: Value<RouterState<*, MoMChinMain.CommunityChild>>
         = communityRoot.routerState
+
+    override val animatedCRouterState: Value<List<AnimatedChild<MoMChinMain.CommunityChild>>>
+        = communityRouterState.asValue(lifecycle)
 
     override val bungRouterState: Value<RouterState<*, MoMChinMain.BungChild>>
         = bungRoot.routerState
