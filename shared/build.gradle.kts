@@ -6,9 +6,14 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("kotlin-parcelize")
+    id("com.apollographql.apollo3") version "3.2.1"
 }
 
 version = "1.0"
+
+apollo {
+    packageName.set("com.example.momchin")
+}
 
 kotlin {
     android()
@@ -70,14 +75,14 @@ kotlin {
                 api(deps.decompose.extension.compose)
                 implementation(deps.koin.core)
                 implementation(deps.badoo.reaktive)
-                implementation(deps.bundles.ktor)
+                implementation(deps.apollo.runtime)
                 implementation(deps.bundles.mviKotlin)
             }
         }
         val commonTest by getting
         val androidMain by getting {
             dependencies {
-                implementation(deps.ktor.okHttp)
+
             }
         }
         val androidTest by getting
@@ -86,7 +91,6 @@ kotlin {
             dependencies {
                 api(deps.decompose.decompose)
                 api(deps.bundles.mviKotlin)
-                implementation(deps.ktor.ios)
             }
         }
         val iosTest by getting

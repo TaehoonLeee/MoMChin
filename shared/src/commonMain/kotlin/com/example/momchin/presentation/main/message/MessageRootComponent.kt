@@ -35,6 +35,6 @@ class MessageRootComponent(
 		object List : Configuration
 
 		@Parcelize
-		data class Detail(val message: Message) : Configuration
+		object Detail : Configuration
 	}
 }
